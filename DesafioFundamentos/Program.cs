@@ -7,7 +7,7 @@ decimal precoInicial = 0;
 decimal precoPorHora = 0;
 bool inputVerifier = false;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n");
+Console.WriteLine("Seja bem vindo ao sistema de estacionamento!");
 
 //Verificador do Input "preço inicial"
 Console.WriteLine("Digite o preço inicial:");                  
@@ -49,8 +49,9 @@ while (exibirMenu)
     Console.WriteLine("3 - Listar veículos");
     Console.WriteLine("4 - Alterar preços");
     Console.WriteLine("5 - Encerrar");
-    Console.WriteLine($"Preço inicial: {es.getPrecoInicial():C}");
-    Console.WriteLine($"Preço por hora: {es.getPrecoPorHora():C}");
+    Console.WriteLine($"\nPreço inicial: {es.GetPrecoInicial():C}");
+    Console.WriteLine($"Preço por hora: {es.GetPrecoPorHora():C}");
+    Console.WriteLine($"Total de veiculos estacionados: {es.ContaVeiculos()}");
 
     switch (Console.ReadLine())
     {
@@ -76,7 +77,7 @@ while (exibirMenu)
                     Console.WriteLine("Número inválido, não use caracteres especiais");
                 }
             }
-            es.setPrecoInicial(precoInicial);
+            es.SetPrecoInicial(precoInicial);
 
             //Limpar flag para reutilizar variavel
             inputVerifier = false;
@@ -89,7 +90,7 @@ while (exibirMenu)
                     Console.WriteLine("Número inválido, não use caracteres especiais");
                 }
             }
-            es.setPrecoPorHora(precoPorHora);
+            es.SetPrecoPorHora(precoPorHora);
             inputVerifier = false;
             break;
 
