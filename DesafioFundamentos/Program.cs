@@ -5,19 +5,39 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
+bool inputVerifier = false;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
-precoInicial = Convert.ToDecimal(Console.ReadLine());
+Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n");
 
+//Verificador do Input "preço inicial"
+Console.WriteLine("Digite o preço inicial:");                  
+while(!inputVerifier){
+    //Se o parse for bem suscedido retorna true e sai do laço
+    inputVerifier = decimal.TryParse(Console.ReadLine(), out precoInicial);
+    if(!inputVerifier) {
+        Console.WriteLine("Número inválido, não use caracteres especiais");
+    }
+}
+
+//Limpar flag para reutilizar variavel
+inputVerifier = false;
+
+//Verificador do Input "preço por hora"
 Console.WriteLine("Agora digite o preço por hora:");
-precoPorHora = Convert.ToDecimal(Console.ReadLine());
+while(!inputVerifier){
+    inputVerifier = decimal.TryParse(Console.ReadLine(), out precoPorHora);
+    if(!inputVerifier) {
+        Console.WriteLine("Número inválido, não use caracteres especiais");
+    }
+}
+inputVerifier = false;
 
 // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
 Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
 
 string opcao = string.Empty;
 bool exibirMenu = true;
+bool confirmarSaida = false;
 
 // Realiza o loop do menu
 while (exibirMenu)
@@ -27,7 +47,10 @@ while (exibirMenu)
     Console.WriteLine("1 - Cadastrar veículo");
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
+    Console.WriteLine("4 - Alterar preços");
+    Console.WriteLine("5 - Encerrar");
+    Console.WriteLine($"Preço inicial: {es.getPrecoInicial():C}");
+    Console.WriteLine($"Preço por hora: {es.getPrecoPorHora():C}");
 
     switch (Console.ReadLine())
     {
@@ -44,16 +67,57 @@ while (exibirMenu)
             break;
 
         case "4":
-            exibirMenu = false;
+            //Verificador do Input "preço inicial"
+            Console.WriteLine("Digite o preço inicial:");                  
+            while(!inputVerifier){
+                //Se o parse for bem suscedido retorna true e sai do laço
+                inputVerifier = decimal.TryParse(Console.ReadLine(), out precoInicial);                
+                if(!inputVerifier) {
+                    Console.WriteLine("Número inválido, não use caracteres especiais");
+                }
+            }
+            es.setPrecoInicial(precoInicial);
+
+            //Limpar flag para reutilizar variavel
+            inputVerifier = false;
+
+            //Verificador do Input "preço por hora"
+            Console.WriteLine("Agora digite o preço por hora:");
+            while(!inputVerifier){
+                inputVerifier = decimal.TryParse(Console.ReadLine(), out precoPorHora);
+                if(!inputVerifier) {
+                    Console.WriteLine("Número inválido, não use caracteres especiais");
+                }
+            }
+            es.setPrecoPorHora(precoPorHora);
+            inputVerifier = false;
+            break;
+
+        case "5":   
+            confirmarSaida = true;         
+            while(confirmarSaida) {                
+                Console.WriteLine("Deseja mesmo sair? s/n");
+                switch (Console.ReadLine()) { 
+                    case "s":
+                        exibirMenu = false;
+                        confirmarSaida = false;
+                    break;
+
+                    case "n":
+                        confirmarSaida = false;
+                    break;
+
+                    default:
+                    Console.WriteLine("Opção inválida, tente 's' para sair ou 'n' para voltar");
+                    break;
+                }
+            }
             break;
 
         default:
             Console.WriteLine("Opção inválida");
             break;
     }
-
-    Console.WriteLine("Pressione uma tecla para continuar");
-    Console.ReadLine();
 }
 
 Console.WriteLine("O programa se encerrou");

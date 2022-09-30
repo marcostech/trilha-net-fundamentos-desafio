@@ -62,4 +62,19 @@ public class Estacionamento
             Console.WriteLine("Não há veículos estacionados.");
         }
     }
+
+    public decimal getPrecoInicial(){
+        return precoInicial;
+    }
+
+    public decimal getPrecoPorHora(){
+        return precoPorHora;
+    }
+
+    public void setPrecoInicial(decimal novoPreco){
+        precoInicial = novoPreco;
+    }
+    public void setPrecoPorHora(decimal novoPreco){
+        precoPorHora = novoPreco;
+    }
 }
