@@ -57,14 +57,20 @@ while (exibirMenu)
     {
         case "1":
             es.AdicionarVeiculo();
+            Console.WriteLine("\nPara voltar aperte uma tecla");
+            Console.ReadKey();
             break;
 
         case "2":
             es.RemoverVeiculo();
+            Console.WriteLine("\nPara voltar aperte uma tecla");
+            Console.ReadKey();
             break;
 
         case "3":
             es.ListarVeiculos();
+            Console.WriteLine("\nPara voltar aperte uma tecla");
+            Console.ReadKey();
             break;
 
         case "4":
