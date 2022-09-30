@@ -101,6 +101,7 @@ public class Estacionamento
     public int ContaVeiculos(){
         return veiculos.Count;
     }
+    
     public decimal GetPrecoInicial(){
         return precoInicial;
     }
@@ -112,6 +113,7 @@ public class Estacionamento
     public void SetPrecoInicial(decimal novoPreco){
         precoInicial = novoPreco;
     }
+
     public void SetPrecoPorHora(decimal novoPreco){
         precoPorHora = novoPreco;
     }

@@ -1,4 +1,9 @@
-﻿using DesafioFundamentos.Models;
+﻿/*Autor: Marcos Vinicius
+* Desafio Dio: Trilha Net Fundamentos
+* Código modelo: Leonardo Buta
+* Data: 30/09
+*/
+using DesafioFundamentos.Models;
 
 // Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
