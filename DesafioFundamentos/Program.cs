@@ -2,6 +2,7 @@
 * Desafio Dio: Trilha Net Fundamentos
 * Código modelo: Leonardo Buta
 * Data: 30/09
+* Sugestão futura: possibilidade de adicionar um banco de dados e um controle automático de horas
 */
 using DesafioFundamentos.Models;
 
